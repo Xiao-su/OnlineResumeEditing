@@ -44,7 +44,7 @@ export default [
             name: 'dashboards',
             icon: 'dashboard',
             path: '/uploadFile',
-            component: './dashboard/analysis',
+            component: './uploadfile',
           },
           {
             path: '/dashboard',
