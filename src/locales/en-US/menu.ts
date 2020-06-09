@@ -49,6 +49,6 @@ export default {
   'menu.editor.flow': 'Flow Editor',
   'menu.editor.mind': 'Mind Editor',
   'menu.editor.koni': 'Koni Editor',
-  'menu.dashboards': 'Main Page',
-  'menu.dashboards.uploadFile': 'Upload Resume',
+  'menu.dashboards': 'UploadResume',
+  'menu.fileslist': 'ResumeList',
 };

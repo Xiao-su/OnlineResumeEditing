@@ -1,7 +1,7 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Col, Dropdown, Menu, Row, Card,  } from 'antd';
+import { Col, Dropdown, Menu, Row, Card, Table } from 'antd';
 import React, { Component } from 'react';
-import { GridContent } from '@ant-design/pro-layout';
+import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { RangePickerProps } from 'antd/es/date-picker/generatePicker';
 import moment from 'moment';
 import { connect, Dispatch } from 'umi';
@@ -10,54 +10,120 @@ import styles from './style.less';
 
 type RangePickerValue = RangePickerProps<moment.Moment>['value'];
 
-interface AnalysisProps {
-  dashboardAndanalysis: AnalysisData;
+interface FilesListProps {
+  dashboardAndanalysis: any;
   dispatch: Dispatch<any>;
   loading: boolean;
 }
 
-interface AnalysisState {
+interface FilesListState {
 
 }
 
-class Analysis extends Component<AnalysisProps, AnalysisState> {
-  state: AnalysisState = {
+class FilesList extends Component<FilesListProps, FilesListState> {
+  state: FilesListState = {
     
   };
 
   componentDidMount() {
-    
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'fileslist/fetch',
+    });
   }
 
   componentWillUnmount() {
-    
+    const { dispatch } = this.props;
+    dispatch({
+      type: 'fileslist/clear',
+    });
   }
 
   render() {
     const { } = this.state;
-    const { } = this.props;
-
+    console.log("this.props:",this.props);
+    const dataSource: any = [];
+    
+    const columns = [
+      {
+        title: '姓名',
+        dataIndex: 'name',
+        key: 'name',
+        fixed: 'left',
+      },
+      {
+        title: '年龄',
+        dataIndex: 'age',
+        fixed: 'left',
+      },
+      {
+        title: '出生年月',
+        dataIndex: 'birthday',
+      },
+      {
+        title: '籍贯',
+        dataIndex: 'race',
+      },
+      {
+        title: '出生年月',
+        dataIndex: 'birthday',
+      },
+      {
+        title: '在职状态',
+        dataIndex: 'work_status',
+      },
+      {
+        title: '面试职位',
+        dataIndex: 'job_interview',
+      },
+      {
+        title: '语言',
+        dataIndex: 'language',
+      },
+      {
+        title: '方言',
+        dataIndex: 'dialect',
+      },
+      {
+        title: '工作年限',
+        dataIndex: 'work_year',
+      },
+      {
+        title: '技术方向',
+        dataIndex: 'technology_direction',
+      },
+      {
+        title: '考评备注',
+        dataIndex: 'evaluation_remarks',
+      },
+    ];
     return (
-      <GridContent>
-        <React.Fragment>
-          
-        </React.Fragment>
-      </GridContent>
+      <PageHeaderWrapper
+      >
+        <Card>
+          <Table 
+          dataSource={dataSource} 
+          columns={columns} 
+          scroll={{ x: 1080 }}
+          size="middle"
+          />
+        </Card>
+      </PageHeaderWrapper>
     );
   }
 }
 
 export default connect(
   ({
-    dashboardAndanalysis,
+    fileslist,
     loading,
   }: {
-    dashboardAndanalysis: any;
+    fileslist: any;
     loading: {
       effects: { [key: string]: boolean };
     };
   }) => ({
-    dashboardAndanalysis,
-    loading: loading.effects['dashboardAndanalysis/fetch'],
+    resumeDatas: fileslist.fileslist,
+    loading: loading.effects['fileslist/fetch'],
   }),
-)(Analysis);
+)(FilesList);

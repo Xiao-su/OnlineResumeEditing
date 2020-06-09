@@ -47,6 +47,12 @@ export default [
             component: './uploadfile',
           },
           {
+            name: 'fileslist',
+            icon: 'dashboard',
+            path: '/fliesList',
+            component: './filesList',
+          },
+          {
             path: '/dashboard',
             name: 'dashboard',
             icon: 'dashboard',

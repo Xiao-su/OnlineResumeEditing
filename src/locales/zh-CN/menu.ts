@@ -49,6 +49,6 @@ export default {
   'menu.editor.flow': '流程编辑器',
   'menu.editor.mind': '脑图编辑器',
   'menu.editor.koni': '拓扑编辑器',
-  'menu.dashboards': '主页面',
-  'menu.dashboards.uploadFile': '简历上传',
+  'menu.dashboards': '简历上传',
+  'menu.fileslist': '简历列表',
 };
