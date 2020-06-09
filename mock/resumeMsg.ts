@@ -63,6 +63,11 @@ const GetResumeList = (req: Request, res: Response) => {
   ]);
 };
 
+/**
+ * 返回简历信息
+ * @param req 
+ * @param res 
+ */
 const getResumeInformationById = (req: Request, res: Response) => {
   const result: resumeInforData = {
     resume_type: '0',
@@ -80,6 +85,11 @@ const getResumeInformationById = (req: Request, res: Response) => {
   });
 }
 
+/**
+ * 返回基本信息
+ * @param req 
+ * @param res 
+ */
 const getResumeBaseInfoById = (req: Request, res: Response) => {
   const result: resumeBaseInfo = {
     name: '黄忠煌',
@@ -133,21 +143,141 @@ const getResumeBaseInfoById = (req: Request, res: Response) => {
   });
 }
 
+/**
+ * 返回联系信息
+ * @param req 
+ * @param res 
+ */
+const getContactInformationById = (req: Request, res: Response) => {
+  const result = {
+    email: '1028248469@qq.com',
+    phone: '13726263420',
+    qq: '1028248469',
+    weixin: 'weixinxxx',
+    postal_code: '519000',
+    city: '茂名',
+    city_norm: '中国-广东省-茂名市',
+    living_address: '茂名',
+    living_address_norm: '中国-广东省-茂名市',
+  };
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+/**
+ * 返回期望工作
+ * @param req 
+ * @param res 
+ */
+const getExpectToWork = (req: Request, res: Response) => {
+  const result = {
+    expect_job: 'sharepoint',
+    expect_cpy: '珠海爱浦京软件技术有限公司',
+    expect_salary: '5000~6000元/月',
+    expect_salary_min: '5000元/月',
+    expect_salary_max: '5000元/月',
+    expect_industry: '计算机软件',
+    expect_time: '随时',
+    expect_jnature: '全职',
+    expect_jstatus: '在职',
+    expect_jlocation: '珠海',
+    expect_jlocation_norm: '中国-广东省-珠海市',
+  };
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+/**
+ * 返回教育经历
+ * @param req 
+ * @param res 
+ */
+const getEducationExperience = (req: Request, res: Response) => {
+  const result = [
+    {
+      start_date: '2012.01',
+      end_date: '2016.01',
+      edu_college: '吉林大学珠海学院',
+      edu_college_type: '普通院校',
+      edu_college_rank: '1000',
+      edu_college_dept: '院系名称',
+      edu_major: '软件工程',
+      edu_recruit: '是否统招',
+      edu_gpa: '成绩',
+      edu_degree: '本科',
+      edu_degree_norm: '本科',
+    },
+    {
+      start_date: '2012.01',
+      end_date: '2016.01',
+      edu_college: '吉林大学珠海学院',
+      edu_college_type: '普通院校',
+      edu_college_rank: '1000',
+      edu_college_dept: '院系名称',
+      edu_major: '软件工程',
+      edu_recruit: '是否统招',
+      edu_gpa: '成绩',
+      edu_degree: '本科',
+      edu_degree_norm: '本科',
+    },
+  ];
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+
+
+/**
+ * 返回工作经历
+ * @param req 
+ * @param res 
+ */
+const getWorksExperience = (req: Request, res: Response) => {
+  const result = [
+    {
+      start_date: '2015.01',
+      end_date: '2017.06',
+      job_cpy: '信盈科技(亚洲)有限公司',
+      job_cpy_nature: '外资',
+      job_cpy_size: '500人',
+      job_cpy_desc: '公司描述',
+      job_industry: '计算机软件',
+      job_position: '软件UI工程师/系统工程师',
+      job_dept: 'IT技术部',
+      job_nature: '全职',
+      job_salary: '工作薪资',
+      job_staff: '下属人数',
+      job_report_to: '汇报对象',
+      job_location: '工作地点',
+      job_why_leave: '离职原因',
+      job_duaraton: '1年3个月',
+      job_capacity: '工作能力',
+      job_content: '1.主要运用bootsrap 与 前端Knedo ui 控件等去设计 sharepoint 门户网页的页面布局,然后再通过.Net server CSOM JSOM 或者 REST api 去实现网页与sharepoint 数据交互。2.负责页面人员权限管理,上传附件,新增网站等功能 webpart 后台开发。',
+    }
+  ];
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+
 export default {
   'GET /api/resumes': GetResumeList,
   'GET /api/baseInifo/resumeInformation/:userId': getResumeInformationById,
   'GET /api/baseInifo/resumeBaseInfo/:userId': getResumeBaseInfoById,
 };
-
-// resume_type	简历类型	string	取值0~4：
-// 0:中文
-// 1:英文
-// 2:中英（前中后英）
-// 3:英中（前英后中）
-// 4:空
-// resume_source	简历来源	string	智联、智联卓聘、前程无忧、51精英、猎聘、boss直聘、拉勾
-// resume_id	简历id	string	智联/51job等网站里的简历id
-// resume_name	简历文件名	string	输入的简历文件名
-// resume_parse_time	简历解析时间	string	YYYY-MM-DD HH-MM-SS
-// resume_update_time	简历更新时间	string	更新时间
-// resume_integrity	简历完整度	string	取值0~100
