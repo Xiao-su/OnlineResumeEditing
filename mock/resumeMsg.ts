@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-interface resumeInforData{
+export interface resumeInforData{
   resume_type: string, 
   resume_source: string,
   resume_id: string,
@@ -10,7 +10,7 @@ interface resumeInforData{
 }
 
 
-interface resumeBaseInfo{
+export interface resumeBaseInfo{
   name: string,
   surname: string,
   gender: string,
@@ -54,14 +54,75 @@ interface resumeBaseInfo{
   major: string,
   degree: string,
   recruit: string,
+  technology_direction: string,
 }
 
+/**
+ * 返回简历信息列表
+ * @param req 
+ * @param res 
+ */
+const getResumeList = (req: Request, res: Response) => {
+  const result = [
+    {
+      id: 123,
+      name: '张三',
+      age: '23',
+      birthday: '2019.10.02',
+      race: '汉族',
+      work_status: {
+        state: 1,
+        msg: '在职',
+      },
+      language: '普通话',
+      dialect: '客家话',
+      work_year: '0',
+      technology_direction: '技术方向',
+      job_interview: '前端开发',
+      evaluation_remarks: '考评备注',
+    },
+    {
+      id: 124,
+      name: '王老五',
+      age: '22',
+      birthday: '2019.10.03',
+      race: '汉族',
+      work_status: {
+        state: 0,
+        msg: '离职',
+      },
+      language: '普通话',
+      dialect: '客家话',
+      work_year: '4',
+      technology_direction: '技术方向',
+      job_interview: '后端开发',
+      evaluation_remarks: '考评备注',
+    },
+    {
+      id: 125,
+      name: '李四',
+      age: '21',
+      birthday: '2019.10.04',
+      race: '汉族',
+      work_status: {
+        state: 1,
+        msg: '在职',
+      },
+      language: '普通话',
+      dialect: '客家话',
+      work_year: '8',
+      technology_direction: '技术方向',
+      job_interview: '产品经理',
+      evaluation_remarks: '考评备注',
+    },
+  ];
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  });
+}
 
-const GetResumeList = (req: Request, res: Response) => {
-  res.json([
-
-  ]);
-};
 
 /**
  * 返回简历信息
@@ -94,7 +155,7 @@ const getResumeBaseInfoById = (req: Request, res: Response) => {
   const result: resumeBaseInfo = {
     name: '黄忠煌',
     surname: '黄',
-    gender: '	男',
+    gender: '男',
     age: '24',
     height: '180cm',
     weight: '75kg',
@@ -237,8 +298,6 @@ const getEducationExperience = (req: Request, res: Response) => {
   })
 };
 
-
-
 /**
  * 返回工作经历
  * @param req 
@@ -275,9 +334,132 @@ const getWorksExperience = (req: Request, res: Response) => {
   })
 };
 
+/**
+ * 返回项目经历
+ * @param req 
+ * @param res 
+ */
+const getProjectExperience = (req: Request, res: Response) => {
+  const result = [
+    {
+      start_date: '2017.03',
+      end_date: '2017.06',
+      proj_name: '香港联康生物集团有限公司sharepoint',
+      proj_cpy: '信盈科技亚洲有限公司',
+      proj_position: '职位名称',
+      proj_content: '1.负责sharepoint list 与sharepoint 门户网页的数据交互。2.文件上传webpart 开发。',
+      proj_resp: '门户网站,运用JSOM api 结合 kendo ui ,实现数据显示,页面运用bootshrap实现响应式页面布局。文件上传部分主要运用SP .net server api 进行权限提升后再更新SP list 与上传文件。',
+    },
+    {
+      start_date: '2017.03',
+      end_date: '2017.06',
+      proj_name: '香港联康生物集团有限公司sharepoint',
+      proj_cpy: '信盈科技亚洲有限公司',
+      proj_position: '职位名称',
+      proj_content: '1.负责sharepoint list 与sharepoint 门户网页的数据交互。2.文件上传webpart 开发。',
+      proj_resp: '门户网站,运用JSOM api 结合 kendo ui ,实现数据显示,页面运用bootshrap实现响应式页面布局。文件上传部分主要运用SP .net server api 进行权限提升后再更新SP list 与上传文件。',
+    },
+    {
+      start_date: '2017.03',
+      end_date: '2017.06',
+      proj_name: '香港联康生物集团有限公司sharepoint',
+      proj_cpy: '信盈科技亚洲有限公司',
+      proj_position: '职位名称',
+      proj_content: '1.负责sharepoint list 与sharepoint 门户网页的数据交互。2.文件上传webpart 开发。',
+      proj_resp: '门户网站,运用JSOM api 结合 kendo ui ,实现数据显示,页面运用bootshrap实现响应式页面布局。文件上传部分主要运用SP .net server api 进行权限提升后再更新SP list 与上传文件。',
+    }
+  ];
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+/**
+ * 返回技能列表
+ * @param req 
+ * @param res 
+ */
+const getSkillsList = (req: Request, res: Response) => {
+  const result = [
+    {
+      skills_name: 'CET-4',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },
+    {
+      skills_name: '面向对象',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },
+    {
+      skills_name: 'HTML',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },{
+      skills_name: 'vs',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },
+    {
+      skills_name: 'net',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },
+    {
+      skills_name: 'MVC',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    },
+    {
+      skills_name: 'SQL',
+      skills_level: '熟悉',
+      skills_time: '1个月',
+      train_loc:  '培训地点',
+    }
+  ];
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
+
+/**
+ * 返回自我评价
+ * @param req 
+ * @param res 
+ */
+const getSelfEvaluation = (req: Request, res: Response) => {
+  const result = {
+    content:'1,熟悉使用C#编程基础语言,具备面向对象的思维方法,有良好的编程风格,熟悉 vs 2012使用 2,熟悉HTML +css+ JavaScript开发 3,熟悉 .net MVC的网站开发 4,掌握SQL语句和SQL Server数据库 5,熟悉sharepoint 2013 的基本开发 6,熟悉kendo ui +bootshrap等控件的使用 7,积极主动、认真踏实、有良好的沟通能力和团队合作精神',
+  };
+
+  res.send({
+    status: 'ok',
+    result: result,
+    msg: 'success',
+  })
+};
 
 export default {
-  'GET /api/resumes': GetResumeList,
   'GET /api/baseInifo/resumeInformation/:userId': getResumeInformationById,
   'GET /api/baseInifo/resumeBaseInfo/:userId': getResumeBaseInfoById,
+  'GET /api/baseInifo/contactInformationById/:userId': getContactInformationById,
+  'GET /api/baseInifo/expectToWork/:userId': getExpectToWork,
+  'GET /api/baseInifo/educationExperience/:userId': getEducationExperience,
+  'GET /api/baseInifo/worksExperience/:userId': getWorksExperience,
+  'GET /api/baseInifo/projectExperience/:userId': getProjectExperience,
+  'GET /api/baseInifo/skillsList/:userId': getSkillsList,
+  'GET /api/baseInifo/selfEvaluation/:userId': getSelfEvaluation,
+  'GET /api/baseInifo/resumeList:': getResumeList,
 };
