@@ -1,7 +1,7 @@
 import { UploadOutlined } from '@ant-design/icons';
 import { Col, Dropdown, Menu, Row, Card, Upload, message, Input, Button } from 'antd';
 import React, { Component, Suspense } from 'react';
-import { GridContent } from '@ant-design/pro-layout';
+import { PageHeaderWrapper } from '@ant-design/pro-layout';
 import { RadioChangeEvent } from 'antd/es/radio';
 import { RangePickerProps } from 'antd/es/date-picker/generatePicker';
 import moment from 'moment';
@@ -79,36 +79,35 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
 
    
     return (
-      <GridContent>
-        <React.Fragment>
-          <Card bordered={false}>
-            <Row>
-              <Col {...colCss}>
-                <div className={styles.pageHeaderTitle}>
-                  <h2>简历解析</h2>
-                  <p>使用说明：粘贴简历文本至文本框或者提交简历文件，并点击提交按钮。</p>
-                </div>
-              </Col>
-            </Row>
-            <Row gutter={[0,24]}>
-              <Col {...colCss}>
-                <TextArea rows={11} />
-              </Col>
-            </Row>
-            <Row gutter={[0,24]}>
-              <Col {...colCss}>
-                <Upload {...uploadProps}>
-                  <Button>
-                    <UploadOutlined /> 选择文件
-                  </Button>
-                  <span>未选择任何文件</span>
-                </Upload>
-                <span>（支持格式：pdf|doc|docx|txt|odt|RTF|HTML|JPG等30多种格式, 最大10M）</span>
-              </Col>
-            </Row>
-          </Card>
-        </React.Fragment>
-      </GridContent>
+      <PageHeaderWrapper
+      >
+        <Card bordered={false}>
+          <Row>
+            <Col {...colCss}>
+              <div className={styles.pageHeaderTitle}>
+                <h2>简历解析</h2>
+                <p>使用说明：粘贴简历文本至文本框或者提交简历文件，并点击提交按钮。</p>
+              </div>
+            </Col>
+          </Row>
+          <Row gutter={[0,24]}>
+            <Col {...colCss}>
+              <TextArea rows={11} />
+            </Col>
+          </Row>
+          <Row gutter={[0,24]}>
+            <Col {...colCss}>
+              <Upload {...uploadProps}>
+                <Button>
+                  <UploadOutlined /> 选择文件
+                </Button>
+                <span>未选择任何文件</span>
+              </Upload>
+              <span>（支持格式：pdf|doc|docx|txt|odt|RTF|HTML|JPG等30多种格式, 最大10M）</span>
+            </Col>
+          </Row>
+        </Card>
+      </PageHeaderWrapper>
     );
   }
 }
