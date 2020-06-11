@@ -17,7 +17,10 @@ export interface ModelType {
 }
 
 const initState = {
-    resumeDatas: [],
+    resumeDatas: {
+      datas: [],
+      count: 0,
+    },
 };
 
 const Model: ModelType = {
@@ -26,12 +29,22 @@ const Model: ModelType = {
   state: initState,
 
   effects: {
-    *fetch(_, { call, put }) {
+    *fetch({ payload }, { call, put }) {
       const response = yield call(getResumeList);
-      yield put({
-        type: 'save',
-        payload: response,
-      });
+      if(response.status === 'ok'){
+        //模拟分页
+        const limitStart = (payload.currentPage -1) * payload.pageSize;
+        const limitEnd = payload.pageSize * payload.currentPage;
+        yield put({
+          type: 'save',
+          payload: {
+            resumeDatas: {
+              datas: response.result.slice(limitStart, limitEnd),
+              count: response.result.length,
+            },
+          },
+        });
+      }
     },
     *fetchSalesData(_, { call, put }) {
     //   const response = yield call(fakeChartData);
@@ -48,7 +61,7 @@ const Model: ModelType = {
     save(state, { payload }) {
       return {
         ...state,
-        ...payload,
+        resumeDatas: payload.resumeDatas,
       };
     },
     clear() {
