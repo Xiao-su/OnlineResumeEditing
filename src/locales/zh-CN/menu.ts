@@ -51,4 +51,5 @@ export default {
   'menu.editor.koni': '拓扑编辑器',
   'menu.dashboards': '简历上传',
   'menu.fileslist': '简历列表',
+  'menu.resumeAnalysis': '简历解析',
 };

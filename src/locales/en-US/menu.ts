@@ -51,4 +51,5 @@ export default {
   'menu.editor.koni': 'Koni Editor',
   'menu.dashboards': 'UploadResume',
   'menu.fileslist': 'ResumeList',
+  'menu.resumeAnalysis': 'Resume Analysis',
 };

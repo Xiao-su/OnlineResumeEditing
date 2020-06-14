@@ -19,34 +19,33 @@ interface AnalysisProps {
   loading: boolean;
 }
 
-interface AnalysisState {
-
-}
+interface AnalysisState {}
 
 class Analysis extends Component<AnalysisProps, AnalysisState> {
-  state: AnalysisState = {
-    
-  };
+  state: AnalysisState = {};
 
-  componentDidMount() {
-    
-  }
+  componentDidMount() {}
 
-  componentWillUnmount() {
-    
-  }
+  componentWillUnmount() {}
 
   render() {
-    const { } = this.state;
-    const { } = this.props;
+    const {} = this.state;
+    const {} = this.props;
 
+    //文件类型需要后端判断
     const uploadProps = {
       name: 'file',
       action: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+      directory: true,
       headers: {
         authorization: 'authorization-text',
       },
-      onChange:(info)=>{
+      beforeUpload: (file: any, fileList: any) => {
+        console.log('file:', file);
+        console.log('fileList:', fileList);
+        return false;
+      },
+      onChange: (info: any) => {
         if (info.file.status !== 'uploading') {
           console.log(info.file, info.fileList);
         }
@@ -58,29 +57,27 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
       },
     };
 
-    const colCss={
-      sm:{
+    const colCss = {
+      sm: {
         span: 16,
-        offset: 4
+        offset: 4,
       },
-      md:{
+      md: {
         span: 16,
-        offset: 4
+        offset: 4,
       },
-      lg:{
+      lg: {
         span: 16,
-        offset: 4
+        offset: 4,
       },
-      xl:{
+      xl: {
         span: 12,
-        offset: 6
-      }
+        offset: 6,
+      },
     };
 
-   
     return (
-      <PageHeaderWrapper
-      >
+      <PageHeaderWrapper>
         <Card bordered={false}>
           <Row>
             <Col {...colCss}>
@@ -90,12 +87,12 @@ class Analysis extends Component<AnalysisProps, AnalysisState> {
               </div>
             </Col>
           </Row>
-          <Row gutter={[0,24]}>
+          <Row gutter={[0, 24]}>
             <Col {...colCss}>
               <TextArea rows={11} />
             </Col>
           </Row>
-          <Row gutter={[0,24]}>
+          <Row gutter={[0, 24]}>
             <Col {...colCss}>
               <Upload {...uploadProps}>
                 <Button>
