@@ -16,8 +16,7 @@ interface AnalysisProps {
   loading: boolean;
 }
 
-
-const FILE_MAX_SIZE =  1024 * 1024 * 10;
+const FILE_MAX_SIZE = 1024 * 1024 * 10;
 
 class Analysis extends Component<any, any> {
   state: any = {
@@ -32,7 +31,7 @@ class Analysis extends Component<any, any> {
   handleUpload = () => {
     const { fileList } = this.state;
     const formData = new FormData();
-    fileList.forEach(file => {
+    fileList.forEach((file) => {
       formData.append('upload_file', file);
     });
 
@@ -48,7 +47,7 @@ class Analysis extends Component<any, any> {
       processData: false,
       data: formData,
       success: (resdata) => {
-        console.log("resdata:",resdata);
+        console.log('resdata:', resdata);
         this.setState({
           fileList: [],
           uploading: false,
@@ -56,7 +55,7 @@ class Analysis extends Component<any, any> {
         message.success('upload successfully.');
       },
       error: (err) => {
-        console.log("err:",err);
+        console.log('err:', err);
         this.setState({
           uploading: false,
         });
@@ -100,7 +99,7 @@ class Analysis extends Component<any, any> {
         });
       },
       beforeUpload: (file: any) => {
-        if(file.size > FILE_MAX_SIZE){
+        if (file.size > FILE_MAX_SIZE) {
           message.success('文件超过10M，上传失败');
           return;
         };
@@ -142,16 +141,16 @@ class Analysis extends Component<any, any> {
           </Row>
           <Row gutter={[0, 24]}>
             <Col span={4} offset={10}>
-            <Button
-              type="primary"
-              onClick={this.handleUpload}
-              disabled={fileList.length === 0}
-              loading={uploading}
-              style={{ marginTop: 16 }}
-              block
-            >
-              {uploading ? '上传中' : '确认上传'}
-            </Button>
+              <Button
+                type="primary"
+                onClick={this.handleUpload}
+                disabled={fileList.length === 0}
+                loading={uploading}
+                style={{ marginTop: 16 }}
+                block
+              >
+                {uploading ? '上传中' : '确认上传'}
+              </Button>
             </Col>
           </Row>
         </Card>
