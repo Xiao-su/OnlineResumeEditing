@@ -272,7 +272,7 @@ export default [
           // },
           {
             path: '/',
-            redirect: '/dashboard/analysis',
+            redirect: '/uploadFile',
             // authority: ['admin', 'user'],
           },
           {
