@@ -59,7 +59,6 @@ class FilesList extends Component<FilesListProps, any> {
   render() {
     const { pageSize } = this.state;
     const { resumeDatas } = this.props;
-    console.log("this.props:",this.props);
     const columns = [
       {
         title: '姓名',

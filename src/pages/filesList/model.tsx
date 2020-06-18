@@ -31,7 +31,7 @@ const Model: ModelType = {
   effects: {
     *fetch({ payload }, { call, put }) {
       const response = yield call(getResumeList);
-      if(response.status === 'ok'){
+      if(response.status === 1){
         //模拟分页
         const limitStart = (payload.currentPage -1) * payload.pageSize;
         const limitEnd = payload.pageSize * payload.currentPage;

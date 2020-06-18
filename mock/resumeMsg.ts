@@ -65,7 +65,7 @@ export interface resumeBaseInfo{
 const getResumeList = (req: Request, res: Response) => {
   const result = [
     {
-      id: 123,
+      uuid: 123,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -82,7 +82,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 124,
+      uuid: 124,
       name: '王老五',
       age: '22',
       birthday: '2019.10.03',
@@ -99,7 +99,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 125,
+      uuid: 125,
       name: '李四',
       age: '21',
       birthday: '2019.10.04',
@@ -116,7 +116,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 126,
+      uuid: 126,
       name: '李四',
       age: '21',
       birthday: '2019.10.04',
@@ -133,7 +133,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 127,
+      uuid: 127,
       name: '李四',
       age: '21',
       birthday: '2019.10.04',
@@ -150,7 +150,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 128,
+      uuid: 128,
       name: '李四',
       age: '21',
       birthday: '2019.10.04',
@@ -167,7 +167,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 129,
+      uuid: 129,
       name: '李四',
       age: '21',
       birthday: '2019.10.04',
@@ -184,7 +184,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 130,
+      uuid: 130,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -201,7 +201,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 131,
+      uuid: 131,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -218,7 +218,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 132,
+      uuid: 132,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -235,7 +235,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 133,
+      uuid: 133,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -252,7 +252,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 134,
+      uuid: 134,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -269,7 +269,7 @@ const getResumeList = (req: Request, res: Response) => {
       evaluation_remarks: '考评备注',
     },
     {
-      id: 135,
+      uuid: 135,
       name: '张三',
       age: '23',
       birthday: '2019.10.02',
@@ -287,7 +287,7 @@ const getResumeList = (req: Request, res: Response) => {
     },
   ];
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   });
@@ -310,7 +310,7 @@ const getResumeInformationById = (req: Request, res: Response) => {
     resume_integrity: '80',
   };
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   });
@@ -322,7 +322,7 @@ const getResumeInformationById = (req: Request, res: Response) => {
  * @param res 
  */
 const getResumeBaseInfoById = (req: Request, res: Response) => {
-  const result: resumeBaseInfo = {
+  const result: any = {
     name: '黄忠煌',
     surname: '黄',
     gender: '男',
@@ -336,6 +336,7 @@ const getResumeBaseInfoById = (req: Request, res: Response) => {
     id_card: '441615678641465134',
     race: '汉族',
     nationality: '中国',
+    hometown_address: '上海市虹口区广粤路xx弄x号xxx室',
     polit_status: '党员',
     languages: '英语、日语',
     english_level: '大学英语6级',
@@ -368,7 +369,7 @@ const getResumeBaseInfoById = (req: Request, res: Response) => {
     recruit: '统招',
   };
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   });
@@ -393,7 +394,7 @@ const getContactInformationById = (req: Request, res: Response) => {
   };
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -420,7 +421,7 @@ const getExpectToWork = (req: Request, res: Response) => {
   };
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -462,7 +463,7 @@ const getEducationExperience = (req: Request, res: Response) => {
   ];
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -498,7 +499,7 @@ const getWorksExperience = (req: Request, res: Response) => {
   ];
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -541,7 +542,7 @@ const getProjectExperience = (req: Request, res: Response) => {
   ];
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -598,7 +599,7 @@ const getSkillsList = (req: Request, res: Response) => {
   ];
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
@@ -615,21 +616,21 @@ const getSelfEvaluation = (req: Request, res: Response) => {
   };
 
   res.send({
-    status: 'ok',
+    status: 1,
     result: result,
     msg: 'success',
   })
 };
 
 export default {
-  'GET /api/baseInifo/resumeInformation/:userId': getResumeInformationById,
-  'GET /api/baseInifo/resumeBaseInfo/:userId': getResumeBaseInfoById,
-  'GET /api/baseInifo/contactInformationById/:userId': getContactInformationById,
-  'GET /api/baseInifo/expectToWork/:userId': getExpectToWork,
-  'GET /api/baseInifo/educationExperience/:userId': getEducationExperience,
-  'GET /api/baseInifo/worksExperience/:userId': getWorksExperience,
-  'GET /api/baseInifo/projectExperience/:userId': getProjectExperience,
-  'GET /api/baseInifo/skillsList/:userId': getSkillsList,
-  'GET /api/baseInifo/selfEvaluation/:userId': getSelfEvaluation,
+  'GET /api/baseInifo/resumeInformation': getResumeInformationById,
+  'GET /api/baseInifo/resumeBaseInfo': getResumeBaseInfoById,
+  'GET /api/baseInifo/contactInformationById': getContactInformationById,
+  'GET /api/baseInifo/expectToWork': getExpectToWork,
+  'GET /api/baseInifo/educationExperience': getEducationExperience,
+  'GET /api/baseInifo/worksExperience': getWorksExperience,
+  'GET /api/baseInifo/projectExperience': getProjectExperience,
+  'GET /api/baseInifo/skillsList': getSkillsList,
+  'GET /api/baseInifo/selfEvaluation': getSelfEvaluation,
   'GET /api/baseInifo/resumeList': getResumeList,
 };

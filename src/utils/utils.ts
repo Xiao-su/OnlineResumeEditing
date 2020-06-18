@@ -63,3 +63,65 @@ export const getRouteAuthority = (path: string, routeData: Route[]) => {
   });
   return authorities;
 };
+
+export const getResumeType = (typeNum: string) => {
+  let resumeType = '空';
+  switch(typeNum){
+    case '0': resumeType = '中文';
+      break;
+    case '1': resumeType = '英文';
+      break;
+    case '2': resumeType = '中英';
+      break;
+    case '3': resumeType = '英中';
+      break;
+    case '4': resumeType = '空';
+      break;
+    default:
+      break;
+  }
+
+  return resumeType;
+}
+
+// 有否海外留学经历 | 有否海外工作经历
+export const hasOverseaEdu = (typeNum: string) =>{
+  let eduType = '无';
+  switch(typeNum){
+    case '0': eduType = '否';
+      break;
+    case '1': eduType = '是';
+      break;
+    default:
+      break;
+  }
+
+  return eduType;
+}
+
+
+// 毕业学校类型
+export const getCollegeType = (typeNum: string) =>{
+  let collegeType = '无';
+  switch(typeNum){
+    case '0': collegeType = '普通院校';
+      break;
+    case '1': collegeType = '985';
+      break;
+    case '2': collegeType = '211';
+      break;
+    case '3': collegeType = '港澳台院校';
+      break;
+    case '4': collegeType = '海外院校';
+      break;
+    case '5': collegeType = '中学';
+      break;
+    case '6': collegeType = '职业教育';
+      break;
+    case '7': collegeType = '培训机构';
+      break;
+    default:
+      break;
+  }
+  return collegeType;
+}

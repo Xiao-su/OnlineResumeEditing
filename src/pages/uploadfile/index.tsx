@@ -1,24 +1,34 @@
 import { UploadOutlined } from '@ant-design/icons';
-import { Col, Dropdown, Menu, Row, Card, Upload, message, Input, Button } from 'antd';
-import React, { Component, Suspense } from 'react';
+import { Col, Row, Card, Upload, message, Input, Button } from 'antd';
+import React, { Component } from 'react';
 import { PageHeaderWrapper } from '@ant-design/pro-layout';
-import { RangePickerProps } from 'antd/es/date-picker/generatePicker';
-import moment from 'moment';
 import reqwest from 'reqwest';
-import { connect, Dispatch } from 'umi';
+import { connect } from 'umi';
 import styles from './style.less';
 
 const { TextArea } = Input;
 
-interface AnalysisProps {
-  dashboardAndanalysis: any;
-  dispatch: Dispatch<any>;
-  loading: boolean;
-}
-
 const FILE_MAX_SIZE = 1024 * 1024 * 10;
+const colCss = {
+  sm: {
+    span: 16,
+    offset: 4,
+  },
+  md: {
+    span: 16,
+    offset: 4,
+  },
+  lg: {
+    span: 16,
+    offset: 4,
+  },
+  xl: {
+    span: 12,
+    offset: 6,
+  },
+};
 
-class Analysis extends Component<any, any> {
+class UploadFile extends Component<any, any> {
   state: any = {
     fileList: [],
     uploading: false,
@@ -31,7 +41,7 @@ class Analysis extends Component<any, any> {
   handleUpload = () => {
     const { fileList } = this.state;
     const formData = new FormData();
-    fileList.forEach((file) => {
+    fileList.forEach((file: any) => {
       formData.append('upload_file', file);
     });
 
@@ -41,12 +51,12 @@ class Analysis extends Component<any, any> {
 
     // You can use any AJAX library you like
     reqwest({
-      url: 'http://106.53.255.113/resume/upload/',
-      // url: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
+      // url: 'http://106.53.255.113/resume/upload/',
+      url: 'https://www.mocky.io/v2/5cc8019d300000980a055e76',
       method: 'post',
       processData: false,
       data: formData,
-      success: (resdata) => {
+      success: (resdata: any) => {
         console.log('resdata:', resdata);
         this.setState({
           fileList: [],
@@ -54,7 +64,7 @@ class Analysis extends Component<any, any> {
         });
         message.success('upload successfully.');
       },
-      error: (err) => {
+      error: (err: any) => {
         console.log('err:', err);
         this.setState({
           uploading: false,
@@ -67,25 +77,6 @@ class Analysis extends Component<any, any> {
   render() {
     const { uploading, fileList } = this.state;
     const {} = this.props;
-
-    const colCss = {
-      sm: {
-        span: 16,
-        offset: 4,
-      },
-      md: {
-        span: 16,
-        offset: 4,
-      },
-      lg: {
-        span: 16,
-        offset: 4,
-      },
-      xl: {
-        span: 12,
-        offset: 6,
-      },
-    };
 
     const uploadProps = {
       onRemove: (file: any) => {
@@ -160,16 +151,5 @@ class Analysis extends Component<any, any> {
 }
 
 export default connect(
-  ({
-    dashboardAndanalysis,
-    loading,
-  }: {
-    dashboardAndanalysis: any;
-    loading: {
-      effects: { [key: string]: boolean };
-    };
-  }) => ({
-    dashboardAndanalysis,
-    loading: loading.effects['dashboardAndanalysis/fetch'],
-  }),
-)(Analysis);
+  ({}) => ({}),
+)(UploadFile);
